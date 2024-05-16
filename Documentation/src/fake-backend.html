@@ -1,0 +1,104 @@
+<!doctype html>
+<html lang="en">
+
+    <head>
+
+        @@include("partials/title-meta.html", {"title": "Setup"})
+        @@include("partials/head-css.html")
+
+    </head>
+
+    <body data-topbar="dark" data-spy="scroll" data-target=".right-side-nav"
+        data-offset="175">
+
+        <!-- Begin page -->
+        <div id="layout-wrapper">
+
+            @@include("partials/topbar.html")
+
+            @@include("partials/sidebar.html")
+
+            <!-- ============================================================== -->
+            <!-- Start right Content here -->
+            <!-- ============================================================== -->
+            <div class="main-content">
+
+                <div class="page-content">
+                    <div class="container-fluid">
+
+                        <div class="row">
+                            <div class="col-lg-12">
+                                <div class="card">
+                                    <div class="card-body">
+                                        <div class="p-lg-1">
+
+                                            <div class="d-xl-flex">
+
+                                                <div class="w-100">
+                                                    <div id="fake-backend" class="mb-5">
+                                                    <h5 class="mt-4">Fake-Backend</h5>
+                                                    <p>
+                                                        <h5>* React js</h5>
+                                                        Set <code>
+                                                            REACT_APP_DEFAULTAUTH=fake
+                                                        </code> in the
+                                                        <code>.env</code>
+                                                        file. <br>
+                                                        Remove the firebase
+                                                        setup code from the
+                                                        <code>App.js</code>
+                                                        file. <br>
+                                                        Now just uncomment
+                                                        the below
+                                                        fake-backend setup
+                                                        code in the <code>App.js</code>
+                                                        file. <br>
+                                                    </p>
+                                                    <pre class="bg-dark
+                                                        text-white p-3">
+import fakeBackend from "./helpers/AuthType/fakeBackend"
+
+// Activating fake backend
+fakeBackend();
+</pre>
+
+                                                    <p>
+                                                        <h5>* Vite + React js</h5>
+                                                        Set <code> VITE_APP_DEFAULTAUTH=fake </code> in the <code>.env</code> file. <br>
+                                                        Remove the firebase setup code from the <code>App.jsx</code> file. <br> Now just uncomment
+                                                        the below fake-backend setup code in the <code>App.jsx</code> file. <br>
+                                                    </p>
+<pre class="bg-dark text-white p-3">
+import fakeBackend from "./helpers/AuthType/fakeBackend"
+
+// Activating fake backend
+fakeBackend();
+</pre>
+                                                </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- end row -->
+
+                    </div> <!-- container-fluid -->
+                </div>
+                <!-- End Page-content -->
+
+
+                @@include("partials/footer.html")
+            </div>
+            <!-- end main content-->
+
+        </div>
+        <!-- END layout-wrapper -->
+        @@include("partials/vendor-scripts.html")
+
+        <script src="assets/js/app.js"></script>
+
+    </body>
+
+</html>

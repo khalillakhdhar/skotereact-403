@@ -1,0 +1,379 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    @@include("partials/title-meta.html", {"title": "Redux"})
+    @@include("partials/head-css.html")
+  </head>
+
+  <body
+    data-topbar="dark"
+    data-topbar="dark"
+    data-spy="scroll"
+    data-target=".right-side-nav"
+    data-offset="175"
+  >
+    <!-- Begin page -->
+    <div id="layout-wrapper">
+      @@include("partials/topbar.html") @@include("partials/sidebar.html")
+
+      <!-- ============================================================== -->
+      <!-- Start right Content here -->
+      <!-- ============================================================== -->
+      <div class="main-content">
+        <div class="page-content">
+          <div class="container-fluid">
+            <div class="row">
+              <div class="col-lg-12">
+                <div class="card">
+                  <div class="card-body">
+                    <div class="p-lg-1">
+                      <div class="d-xl-flex">
+                        <div class="w-100">
+                          <div>
+                            <!-- intro start -->
+                            <div id="introduction" class="mb-5">
+                              <h4 class="mt-0 mb-4">Redux</h4>
+                              <p class="">
+                                Skote React is having routing setup based on
+                                <a href="https://react-redux.js.org/"
+                                  >React-Redux</a
+                                >
+                                &
+                                <a href="https://redux-saga.js.org/"
+                                  >Redux-Saga</a
+                                >. The Store configurations are located in
+                                <code>src/store</code> folder.
+                              </p>
+                              <p class="mb-1">
+                                All module's actions are exported from
+                                <code>src/store/actions.js</code> file, All
+                                module's reducer are exported from
+                                <code>src/store/reducers.js</code> file, All
+                                module's saga are exported from
+                                <code>src/store/sagas.js</code> file, The
+                                <code>src/store/index.js</code> file is
+                                handling global redux-store of the template.
+                              </p>
+                              <p class="mb-1"></p>
+                              <p class="mb-1"></p>
+                              <p></p>
+                            </div>
+                            <!-- intro end -->
+
+                            <!-- how to create start -->
+                            <div id="how-to-create">
+                              <h5>How To Create Actions & Saga ?</h5>
+                              <p>
+                                This example is created with new module's
+                                actions & saga creation.
+                              </p>
+                              <ol>
+                                <li class="mb-2">
+                                  Create a folder named with your module in
+                                  <code>src/store</code> folder and then create
+                                  actions.js, saga.js, reducer.js &
+                                  actionTypes.js files and follow the pattern of
+                                  other modules added in this template.
+                                </li>
+                                <li class="mb-2">
+                                  Add your action name in the actionTypes.js
+                                  file. E.g.
+                                  <div class="mt-1">
+                                    <pre class="bg-dark text-white p-3">
+export const GET_USERS_LIST = "GET_USERS_LIST"
+</pre
+                                    >
+                                  </div>
+                                </li>
+                                <li class="mb-2">
+                                  Create the action in the action.js file. And
+                                  make sure you pass the same action type as a
+                                  <strong>type</strong> parameter which you
+                                  added in <code>actionTypes.js</code> file E.g.
+                                  <div class="mt-1">
+                                    <pre class="bg-dark text-white p-3">
+export const getUsersList = (filters) => {
+  return {
+    type: GET_USERS_LIST,
+    payload: filters,
+  }
+}
+</pre
+                                    >
+                                  </div>
+                                  <p class="mb-0">
+                                    <strong>type</strong> : action name
+                                  </p>
+                                  <p>
+                                    <strong>payload</strong> : action parameters
+                                    (if any)
+                                  </p>
+                                </li>
+                                <li class="mb-2">
+                                  Add your action to the
+                                  <strong>reducer.js</strong> as well. E.g.
+                                  <div class="mt-1">
+                                    <pre class="bg-dark text-white p-3">
+import { GET_USERS_LIST } from "./actionTypes"
+        
+const INIT_STATE = {
+  users: [],
+}
+        
+const contacts = (state = INIT_STATE, action) => {
+  switch (action.type) {
+    case GET_USERS_LIST:
+      return {
+        ...state,
+        users: action.payload,
+      }
+            
+    default:
+      return state
+    }
+}
+        
+export default contacts
+</pre
+                                    >
+                                  </div>
+                                </li>
+                                <li>
+                                  Add saga function & watcher for action in
+                                  saga.js file. E.g.
+                                  <div class="mt-1">
+                                    <pre class="bg-dark text-white p-3">
+function* getUsersList() {
+  try {
+    // you can perform any action here, E.g. call the api for get user's list                           
+  } catch (error) {
+    // error handler                                 
+  }
+}
+
+// watchers
+function* contactsSaga() {
+  yield takeEvery(GET_USERS_LIST, getUsersList)
+}
+                                      
+export default usersSaga;</pre
+                                    >
+                                  </div>
+                                </li>
+                              </ol>
+                            </div>
+
+                            <!-- modules start -->
+                            <div id="modules">
+                              <h5 class="mb-3">Store Actions & Reducers</h5>
+                              <ul>
+                                <li class="mb-3">
+                                  <h6>Layout :</h6>
+                                  <p class="mb-0">
+                                    This store modules is made for layout's
+                                    actions, it handles theme customizer's
+                                    actions & values. You can find actions,
+                                    reducer & saga files in
+                                    <code>src/store/layout</code> folder.
+                                  </p>
+                                </li>
+                                <li class="mb-3">
+                                  <h6>Authentication :</h6>
+                                  <p class="mb-0">
+                                    This store modules handles app
+                                    authentication. You can find actions,
+                                    reducer & saga files in
+                                    <code>src/store/auth</code> folder.
+                                  </p>
+                                </li>
+                                <li class="mb-3">
+                                  <h6>Calendar :</h6>
+                                  <p class="mb-0">
+                                    This store modules handles app Calendar's
+                                    functionalities. You can find actions,
+                                    reducer & saga files in
+                                    <code>src/store/calendar</code> folder.
+                                  </p>
+                                </li>
+                                <li class="mb-3">
+                                  <h6>Chat :</h6>
+                                  <p class="mb-0">
+                                    This store modules handles app Chat's
+                                    functionalities. You can find actions,
+                                    reducer & saga files in
+                                    <code>src/store/chat</code> folder.
+                                  </p>
+                                </li>
+                                <li class="mb-3">
+                                  <h6>Contacts :</h6>
+                                  <p class="mb-0">
+                                    This store modules handles app Contact
+                                    module's functionalities. You can find
+                                    actions, reducer & saga files in
+                                    <code>src/store/contact</code> folder.
+                                  </p>
+                                </li>
+                                <li class="mb-3">
+                                  <h6>Crypto :</h6>
+                                  <p class="mb-0">
+                                    This store modules handles app
+                                    Crypto-Currency's functionalities. You can
+                                    find actions, reducer & saga files in
+                                    <code>src/store/crypto</code> folder.
+                                  </p>
+                                </li>
+                                <li class="mb-3">
+                                  <h6>Dashboard :</h6>
+                                  <p class="mb-0">
+                                    This store modules handles app's default
+                                    dashboard's functionalities. You can find
+                                    actions, reducer & saga files in
+                                    <code>src/store/dashboard</code> folder.
+                                  </p>
+                                </li>
+                                <li class="mb-3">
+                                  <h6>Dashboard-Saas :</h6>
+                                  <p class="mb-0">
+                                    This store modules handles app's
+                                    saas-dashboard's functionalities. You can
+                                    find actions, reducer & saga files in
+                                    <code>src/store/dashboard-saas</code>
+                                    folder.
+                                  </p>
+                                </li>
+                                <li class="mb-3">
+                                  <h6>Dashboard-Crypto :</h6>
+                                  <p class="mb-0">
+                                    This store modules handles app's
+                                    crypto-dashboard's functionalities. You can
+                                    find actions, reducer & saga files in
+                                    <code>src/store/dashboard-crypto</code>
+                                    folder.
+                                  </p>
+                                </li>
+                                <li class="mb-3">
+                                  <h6>Dashboard-Blog :</h6>
+                                  <p class="mb-0">
+                                    This store modules handles app's
+                                    blog-dashboard's functionalities. You can
+                                    find actions, reducer & saga files in
+                                    <code>src/store/dashboard-blog</code>
+                                    folder.
+                                  </p>
+                                </li>
+                                <li class="mb-3">
+                                  <h6>Dashboard-Jobs :</h6>
+                                  <p class="mb-0">
+                                    This store modules handles app's
+                                    jobs-dashboard's functionalities. You can
+                                    find actions, reducer & saga files in
+                                    <code>src/store/dashboard-jobs</code>
+                                    folder.
+                                  </p>
+                                </li>
+                                <li class="mb-3">
+                                  <h6>E-Commerce :</h6>
+                                  <p class="mb-0">
+                                    This store modules handles app e-commerce
+                                    functionalities. You can find actions,
+                                    reducer & saga files in
+                                    <code>src/store/e-commerce</code> folder.
+                                  </p>
+                                </li>
+                                <li class="mb-3">
+                                  <h6>Invoices :</h6>
+                                  <p class="mb-0">
+                                    This store modules handles app invoice
+                                    module's functionalities. You can find
+                                    actions, reducer & saga files in
+                                    <code>src/store/e-commerce</code> folder.
+                                  </p>
+                                </li>
+                                <li class="mb-3">
+                                  <h6>E-Mail :</h6>
+                                  <p class="mb-0">
+                                    This store modules handles app e-mail
+                                    module's functionalities. You can find
+                                    actions, reducer & saga files in
+                                    <code>src/store/mails</code> folder.
+                                  </p>
+                                </li>
+                                <li class="mb-3">
+                                  <h6>Projects :</h6>
+                                  <p class="mb-0">
+                                    This store modules handles app project
+                                    module's functionalities. You can find
+                                    actions, reducer & saga files in
+                                    <code>src/store/projects</code> folder.
+                                  </p>
+                                </li>
+                                <li class="mb-3">
+                                  <h6>Tasks :</h6>
+                                  <p class="mb-0">
+                                    This store modules handles app task module's
+                                    functionalities. You can find actions,
+                                    reducer & saga files in
+                                    <code>src/store/tasks</code> folder.
+                                  </p>
+                                </li>
+                                <li class="mb-3">
+                                  <h6>Jobs :</h6>
+                                  <p class="mb-0">
+                                    This store modules handles app job module's
+                                    functionalities. You can find actions,
+                                    reducer & saga files in
+                                    <code>src/store/jobs</code> folder.
+                                  </p>
+                                </li>
+                              </ul>
+                            </div>
+                            <!-- modules end -->
+                          </div>
+                        </div>
+                        <!-- Start right-side-nav -->
+                        <div class="d-none d-xl-block">
+                          <div class="right-side-nav">
+                            <ul class="nav nav-pills flex-column">
+                              <li class="nav-item">
+                                <a href="#introduction" class="nav-link"
+                                  >Introduction</a
+                                >
+                              </li>
+                              <li class="nav-item">
+                                <a href="#how-to-create" class="nav-link"
+                                  >How to Create Actions & Saga</a
+                                >
+                              </li>
+                              <li class="nav-item">
+                                <a href="#modules" class="nav-link"
+                                  >Module's Store & Actions</a
+                                >
+                              </li>
+                            </ul>
+                          </div>
+                        </div>
+
+                        <!-- End right-side-nav -->
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <!-- end row -->
+          </div>
+          <!-- container-fluid -->
+        </div>
+        <!-- End Page-content -->
+
+        @@include("partials/footer.html")
+      </div>
+      <!-- end main content-->
+    </div>
+    <!-- END layout-wrapper -->
+
+    @@include("partials/vendor-scripts.html")
+
+    <script src="assets/js/app.js"></script>
+  </body>
+</html>
